@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.demo.services;
 
 import com.example.demo.model.Trajectory;
-import com.example.demo.repository.TrajectoriesRepository;
+import com.example.demo.repositories.TrajectoriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

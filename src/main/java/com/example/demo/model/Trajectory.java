@@ -1,20 +1,28 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="trajectories")
 public class Trajectory {
+
+    @Id
+    @Column
     private Long id;
+
+    @Column
     private Long taxiId;
+
+    @Column
     private String date;
+
+    @Column
     private double longitude;
+
+    @Column
     private double latitude;
 
-    // Constructor
-    public Trajectory(Long id, Long taxiId, String date, double longitude, double latitude) {
-        this.id = id;
-        this.taxiId = taxiId;
-        this.date = date;
-        this.longitude = longitude;
-        this.latitude = latitude;
-    }
+
 
     // Getters y setters
     public Long getId() {

@@ -1,5 +1,8 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.TaxiLastLocationDTO;
+import com.example.demo.model.Trajectory;
+import com.example.demo.services.TrajectoryService;
 import com.example.demo.services.TaxiService;
 import com.example.demo.model.Taxi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +23,21 @@ public class TaxisController {
     @Autowired
     private TaxiService taxiService;
 
+    @Autowired
+    private TrajectoryService trajectoryService;
+
     @Operation(summary = "Obtener todos los taxis")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Se encontraron todos los taxis",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Taxi.class)) }) })
-
     @GetMapping
     public List<Taxi> getAllTaxis() {
         return taxiService.getAllTaxis();
+    }
+
+    @GetMapping("/last-location")
+    public List<Trajectory> getLastLocationOfTaxis() {
+        return trajectoryService.getAllTrajectories();
     }
 }

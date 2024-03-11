@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TrajectoriesRepository extends JpaRepository<Trajectory, Long> {
+
+    Trajectory findFirstByTaxiIdOrderByDateDesc(Long taxiId);
+
 }

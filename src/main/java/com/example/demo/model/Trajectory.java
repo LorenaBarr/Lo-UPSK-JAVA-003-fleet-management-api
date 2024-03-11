@@ -3,26 +3,25 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="trajectories")
+@Table(name = "trajectories")
 public class Trajectory {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column
+    @Column(name = "taxi_id")
     private Long taxiId;
 
-    @Column
+    @Column(name = "date")
     private String date;
 
-    @Column
-    private double longitude;
+    @Column(name = "latitude")
+    private Double latitude;
 
-    @Column
-    private double latitude;
-
-
+    @Column(name = "longitude")
+    private Double longitude;
 
     // Getters y setters
     public Long getId() {
@@ -49,19 +48,19 @@ public class Trajectory {
         this.date = date;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }

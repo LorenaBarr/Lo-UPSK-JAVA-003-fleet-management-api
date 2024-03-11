@@ -2,23 +2,28 @@ package com.example.demo.dto;
 import com.example.demo.dto.TaxiLastLocationDTO;
 
 
+import java.time.LocalDateTime;
 
 public class TaxiLastLocationDTO {
     private Long id;
+    private Long taxiId;
     private String plate;
+    private LocalDateTime date;
     private double latitude;
     private double longitude;
-    private String dateTime;
 
     // Constructores
     public TaxiLastLocationDTO() {}
 
-    public TaxiLastLocationDTO(Long id, String plate, double latitude, double longitude, String dateTime) {
+    public TaxiLastLocationDTO(Long id, Long taxiId, LocalDateTime date, double latitude, double longitude) {
         this.id = id;
-        this.plate = plate;
+        this.taxiId = taxiId;
+        this.date = date;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.dateTime = dateTime;
+    }
+
+    public TaxiLastLocationDTO(Long id, Long id1, String plate, LocalDateTime date, Double latitude, Double longitude) {
     }
 
     // Getters y setters
@@ -30,12 +35,20 @@ public class TaxiLastLocationDTO {
         this.id = id;
     }
 
-    public String getPlate() {
-        return plate;
+    public Long getTaxiId() {
+        return taxiId;
     }
 
-    public void setPlate(String plate) {
-        this.plate = plate;
+    public void setTaxiId(Long taxiId) {
+        this.taxiId = taxiId;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public double getLatitude() {
@@ -52,13 +65,5 @@ public class TaxiLastLocationDTO {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
-    }
-
-    public String getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
     }
 }

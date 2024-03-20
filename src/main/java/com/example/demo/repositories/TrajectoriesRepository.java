@@ -1,19 +1,11 @@
 package com.example.demo.repositories;
-
 import com.example.demo.model.Trajectory;
-import com.example.demo.repositories.TrajectoriesRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import java.util.List;
-
-
-
-
 
 
 public interface TrajectoriesRepository extends PagingAndSortingRepository<Trajectory, Long> {

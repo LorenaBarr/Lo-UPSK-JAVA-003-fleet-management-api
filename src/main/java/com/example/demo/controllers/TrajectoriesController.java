@@ -2,8 +2,6 @@
 package com.example.demo.controllers;
 import com.example.demo.model.Trajectory;
 import com.example.demo.services.TrajectoryService;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +14,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
-import java.util.List;
+
 
 
 @RestController

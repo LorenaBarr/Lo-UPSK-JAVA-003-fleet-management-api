@@ -3,10 +3,6 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
-import jakarta.persistence.*;
-
-import java.util.Set;
-
 
 @Entity
 @Table(name = "taxis")

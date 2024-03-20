@@ -3,22 +3,37 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import jakarta.persistence.*;
+
+import java.util.Set;
+
 
 @Entity
-@Table(name="taxis")
-
+@Table(name = "taxis")
 public class Taxi {
 
+
     @Id
-    @Column
+    @Column(name= "id")
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name= "plate")
     private String plate;
 
+    //@OneToMany(mappedBy="taxi")
+    //private Set<Trajectories> trajectories;
 
+    // Constructor vacío requerido por JPA
+    public Taxi() {}
 
-    // Getters y setters
+    // Constructor con parámetros
+    public Taxi(Long id, String plate) {
+        this.id = id;
+        this.plate = plate;
+    }
+
+    //Getters y setters
     public Long getId() {
         return id;
     }

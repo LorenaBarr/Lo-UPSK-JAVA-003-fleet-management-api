@@ -18,17 +18,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 
 
-
+// Anotación para indicar que esta clase es un controlador REST y define la ruta base para todas las solicitudes
 @RestController
 @RequestMapping("/trajectories")
 public class TrajectoriesController {
     @Autowired
+    // Inyección del servicio TaxiService en el controlador
     private final TrajectoryService trajectoriesService;
 
     public TrajectoriesController (TrajectoryService trajectoriesService) {
         this.trajectoriesService= trajectoriesService;
     }
-
+    // Documentación para la operación de obtener todos los taxis
     @Operation(summary = "Get-All-Trajectories")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the trajectories",
@@ -40,13 +41,14 @@ public class TrajectoriesController {
                     content = @Content)
     })
 
-
+// Método para manejar la solicitud GET para obtener todas las trayectorias
     @GetMapping("/all")
     public Page<Trajectory> getAllTrajectories (@Parameter(description = "Page number, default is 0") @RequestParam(defaultValue = "0") int page,
                                                   @Parameter(description = "Number of items per page, default is 10") @RequestParam(defaultValue = "10") int size) {
 
-
+        // Creación de un objeto Pageable para la paginación
         Pageable pageable = PageRequest.of(page, size);
+        // Llamada al servicio para obtener todas las trayectorias con paginación
         return trajectoriesService.getAllTrajectories (pageable);
     }
 
@@ -60,7 +62,7 @@ public class TrajectoriesController {
                     content = @Content)
     })
 
-    //Traer por id y fecha
+    // Documentación para la operación de obtener las ubicaciones de un taxi por ID y fecha
     @GetMapping ("byDateAndId")
     public Page<Trajectory> findByDateAndId (
 
@@ -68,12 +70,12 @@ public class TrajectoriesController {
             @Parameter(description = "Date in format YYYY-MM-DD") @RequestParam (name = "date") String dateString ,
             @Parameter(description = "Page number, default is 0") @RequestParam(defaultValue = "0") int page,
             @Parameter(description = "Number of items per page, default is 10") @RequestParam(defaultValue = "10") int size) {
-
+// parametros para indicar el ID, fecha en formatO YYYY-MM-DD, numero de la pagina con valores pretederminados de 0 si no se proporciona, numero de elementos de la paginacion
         Pageable pageable = PageRequest.of(page, size);
         return trajectoriesService.findByDateAndId (taxi_id, dateString,pageable);
     }
 
-    //Traer ultima ubicación reportada de cada taxi
+    // Documentación para la operación de obtener las últimas ubicaciones de los taxis
     @Operation(summary = "Get-Last-Locations ")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the taxi last locations",
@@ -84,7 +86,7 @@ public class TrajectoriesController {
                     content = @Content)
     })
 
-
+// Método para manejar la solicitud GET para obtener las últimas ubicaciones de los taxis
     @GetMapping ("last-Location")
     public Page<Trajectory> getLastLocation (
 

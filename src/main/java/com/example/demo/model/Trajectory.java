@@ -1,8 +1,9 @@
 package com.example.demo.model;
-
+// Importación de las anotaciones necesarias de JPA (Java Persistence API) y OffsetDateTime para manejar fechas con información de zona horaria
 import jakarta.persistence.*;
 
 import java.time.OffsetDateTime;
+// La anotación @Entity indica que esta clase es una entidad JPA y se mapea a una tabla en la base de datos
 
 @Entity
 @Table(name = "trajectories")
@@ -10,30 +11,34 @@ import java.time.OffsetDateTime;
 public class Trajectory {
 
 
-    //Atributos de la entidad o clase
+    //Atributos
     @Id
-    // @Column(name= "id")
+    // La anotación @GeneratedValue especifica cómo se generará el valor de esta columna, en este caso, se generará automáticamente por la base de datos
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    // La anotación @ManyToOne especifica que esta relación es de muchos a uno con la entidad Taxi
 
     @ManyToOne()
+    // La anotación @JoinColumn especifica el nombre de la columna en la tabla de la base de datos que se utilizará para la relación con la entidad Taxi
     @JoinColumn(name= "taxi_id")
-    private Taxi taxi; //tipo taxi join colum manyToOne ManyToOne - OneToMany - JoinColumn
+    // Atributos adicionales para la fecha, latitud y longitud de la trayectoria
+    private Taxi taxi;
 
-    // @Column (name= "date")
+    // Atributo para almacenar la fecha y hora de la trayectoria, utilizando OffsetDateTime para incluir información de zona horaria
     private OffsetDateTime date;
 
-    // @Column (name="latitude")
+    // Atributos para almacenar la latitud y longitud de la ubicación de la trayectoria
+
     private double latitude;
 
-    // @Column (name="longitude")
+
     private double longitude;
 
 
-    //constructor vacío jpa
+    // Constructor vacío requerido por JPA para fines de reflexión y persistencia
     public Trajectory() {}
 
-    //constructor con parámetros
+    // Constructor con parámetros para facilitar la creación de instancias de la clase Trajectory
     public Trajectory(long id, Taxi taxi, OffsetDateTime date, double latitude, double longitude) {
         this.id = id;
         this.date=date;
@@ -42,7 +47,7 @@ public class Trajectory {
         this.taxi= taxi;
     }
 
-    //Getters y setters
+    // Getters y setters para acceder y modificar los campos privados de la clase Trajectory
     public Long getId() {
         return id;
     }
